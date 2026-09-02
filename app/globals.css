@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: theme("colors.line.DEFAULT");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background: theme("colors.accent.DEFAULT");
+    color: white;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.soft");
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-tight {
+    @apply mx-auto w-full max-w-[1120px] px-6;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.22em] text-ink-faint;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply h-px w-6 bg-line-strong;
+  }
+
+  .card {
+    @apply rounded-xl border border-line bg-bg-raised/60 backdrop-blur-sm transition-colors duration-300;
+  }
+
+  .card-hover:hover {
+    @apply border-line-strong bg-bg-overlay/70;
+  }
+
+  .gradient-text {
+    @apply bg-accent-gradient bg-clip-text text-transparent;
+  }
+
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px rgba(99, 102, 241, 0.14),
+      0 0 40px -12px rgba(99, 102, 241, 0.4);
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-line-strong to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 32px rgba(129, 140, 248, 0.35);
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 8%,
+      black 92%,
+      transparent
+    );
+  }
+}

@@ -1,123 +1,135 @@
-# CLAUDE.md - Project Rules
+# CLAUDE.md — Hasan Basheer Portfolio
 
-> Rules Claude follows in every conversation.
+> Project rules Claude follows in every conversation for this repo.
+
+---
+
+## Project
+
+Personal portfolio for **Hasan Basheer** — AI Engineer · Software Engineer · AI Product Builder.
+A premium, dark-first, single-page site that tells a story:
+introduction → identity → capability → proof → depth → evolution → momentum → connection.
 
 ---
 
 ## Tech Stack
 
-- **Backend:** FastAPI + Python 3.11+
-- **Frontend:** React + TypeScript + Vite
-- **Database:** PostgreSQL + SQLAlchemy
-- **Auth:** JWT + Google OAuth
-- **UI:** Chakra UI or Tailwind + Framer Motion
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript (strict, no `any`)
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Icons:** lucide-react
+- **AI assistant route:** `app/api/ask` → Anthropic API when `ANTHROPIC_API_KEY` is set, local knowledge-base fallback otherwise
+
+No database. No backend service beyond the single API route.
 
 ---
 
-## Project Structure
+## Structure
 
 ```
-project/
-├── backend/
-│   ├── app/
-│   │   ├── main.py, config.py, database.py
-│   │   ├── models/, schemas/, routers/, services/, auth/
-│   ├── alembic/
-│   └── tests/
-├── frontend/
-│   └── src/
-│       ├── components/, pages/, hooks/, services/, context/, types/
-├── skills/           # 5 skill files
-├── agents/           # Agent definitions
-└── .claude/commands/ # /generate-prp, /execute-prp
+app/
+  layout.tsx          # metadata, fonts, JSON-LD
+  page.tsx            # section composition
+  globals.css         # design tokens + base layer
+  opengraph-image.tsx # dynamic OG image
+  robots.ts, sitemap.ts
+  api/ask/route.ts    # "Ask Hasan" assistant
+components/
+  layout/             # Navbar, Footer
+  sections/           # one file per page section
+  ui/                 # Reveal, Section, SectionHeader, MagneticButton, Tag
+  visuals/            # HeroVisual, TechConstellation, ArchitectureFlow
+content/              # ALL copy + data — never hardcode content in components
+lib/                  # askHasan (client service), askKnowledge (KB builder), utils
 ```
+
+---
+
+## Content rule (important)
+
+All facts, copy, projects, skills, experience and links live in `content/*.ts`.
+Components render `content` — they never contain hardcoded prose or data.
+To update the portfolio, edit `content/`, not JSX.
+
+Anything not yet verified is marked with a `TODO:` comment and a `confirmed: false`
+flag. **Never fabricate** employers, dates, job titles, metrics, client names,
+awards, GitHub stars or technologies. Placeholders only.
+
+Source of truth for facts: `public/Hasan-Basheer-Resume.pdf`.
 
 ---
 
 ## Code Standards
 
-### Python
-```python
-# Type hints required
-def get_user(db: Session, user_id: int) -> User:
-    pass
-
-# Async endpoints
-@router.get("/users/{id}")
-async def get_user(id: int, db: Session = Depends(get_db)):
-    pass
-```
-
 ### TypeScript
-```typescript
-// Interfaces required - NO any types
-interface User { id: number; email: string; }
+- Interfaces for all data shapes; no `any`.
+- `"use client"` only on components that need state, effects or Framer Motion hooks.
+- Section components accept no props — they read from `content/`.
 
-const fetchUser = async (id: number): Promise<User> => { ... };
-```
+### Styling
+- Tailwind only. No inline styles except computed values (animation delays, SVG coords).
+- Use design tokens from `tailwind.config.ts`: `bg`, `line`, `ink`, `accent`.
+- Reusable classes in `globals.css` `@layer components`: `.card`, `.section-label`, `.gradient-text`, `.hairline`, `.glow-ring`.
+
+### Animation
+- Every animated component must respect `prefers-reduced-motion` via `useReducedMotion()`.
+- Purposeful only: scroll reveal, hover, expansion, node/timeline motion. No infinite spinners, no blocking loaders.
+- Keep transforms GPU-friendly (`transform`, `opacity`).
 
 ---
 
 ## Forbidden
 
-- `print()` → use `logging`
-- Plain passwords → use bcrypt
-- Hardcoded secrets → use env vars
-- `any` type in TypeScript
-- `console.log` in production
-- Inline styles → use UI framework
-
----
-
-## Workflow
-
-```
-1. Edit INITIAL.md (define product)
-2. /generate-prp INITIAL.md
-3. /execute-prp PRPs/[name]-prp.md
-```
-
----
-
-## Skills
-
-| Task | Skill |
-|------|-------|
-| API + Auth | `skills/BACKEND.md` |
-| React + UI | `skills/FRONTEND.md` |
-| Models | `skills/DATABASE.md` |
-| Tests | `skills/TESTING.md` |
-| Docker | `skills/DEPLOYMENT.md` |
-
----
-
-## Agents
-
-| Agent | Role |
-|-------|------|
-| DATABASE-AGENT | Models + migrations |
-| BACKEND-AGENT | API + auth |
-| FRONTEND-AGENT | UI + pages |
-| DEVOPS-AGENT | Docker + CI/CD |
+- `any` type
+- `console.log` in committed code
+- Hardcoded content/prose in components (use `content/`)
+- Fabricated facts or placeholder data presented as real
+- Inline styles for anything static
+- Secrets in the repo (`ANTHROPIC_API_KEY` stays in `.env.local`)
 
 ---
 
 ## Validation
 
 ```bash
-ruff check backend/ && pytest
-npm run lint && npm run type-check
-docker-compose build
+npm run type-check
+npm run lint
+npm run build
 ```
+
+All three must pass before a change is done.
 
 ---
 
 ## Environment Variables
 
 ```env
-DATABASE_URL=postgresql://user:pass@localhost:5432/db
-SECRET_KEY=your-secret-key
-GOOGLE_CLIENT_ID=xxx
-GOOGLE_CLIENT_SECRET=xxx
-VITE_API_URL=http://localhost:8000
+NEXT_PUBLIC_SITE_URL=https://hasanbasheer.dev
+ANTHROPIC_API_KEY=            # optional — enables live "Ask Hasan" answers
+ASK_HASAN_MODEL=claude-haiku-4-5-20251001
 ```
+
+The site is fully functional without any env vars.
+
+---
+
+## Commit Format
+
+```
+feat(section): ...
+fix(section): ...
+style(design): ...
+content: update <what>
+chore: ...
+```
+
+---
+
+## Before Launch — open TODOs
+
+- Confirm GitHub / LinkedIn / YouTube URLs (`content/socialLinks.ts`, `content/github.ts`)
+- Add real project repo + demo links (`content/projects.ts`)
+- Replace placeholder content items with published posts (`content/contentFeed.ts`)
+- Set `NEXT_PUBLIC_SITE_URL` to the real domain
+- Decide whether to expose phone number (`content/profile.ts`)
