@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Github, Linkedin, FileText } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { profile } from "@/content/profile";
 import { socialByKey } from "@/content/socialLinks";
 import { MagneticButton } from "@/components/ui/MagneticButton";
@@ -9,7 +9,6 @@ import { HeroVisual } from "@/components/visuals/HeroVisual";
 
 const github = socialByKey("github")!;
 const linkedin = socialByKey("linkedin")!;
-const resume = socialByKey("resume")!;
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -100,14 +99,6 @@ export function Hero() {
               className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
             >
               <Linkedin size={14} /> LinkedIn
-            </a>
-            <a
-              href={resume.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
-            >
-              <FileText size={14} /> Resume
             </a>
           </motion.div>
         </motion.div>

@@ -27,6 +27,7 @@ const statusStyles: Record<string, string> = {
   Building: "text-accent-cyan border-accent-cyan/30 bg-accent-cyan/10",
   Prototype: "text-accent-soft border-accent-soft/30 bg-accent-soft/10",
   Production: "text-ink-muted border-line-strong bg-bg-overlay",
+  Completed: "text-ink-muted border-line-strong bg-bg-overlay",
   Exploring: "text-amber-300/90 border-amber-400/25 bg-amber-400/10",
   BUILDING: "text-accent-cyan border-accent-cyan/30 bg-accent-cyan/10",
   PROTOTYPING: "text-accent-soft border-accent-soft/30 bg-accent-soft/10",

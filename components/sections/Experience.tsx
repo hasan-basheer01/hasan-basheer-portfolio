@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Tag } from "@/components/ui/Tag";
 import { timeline, journey } from "@/content/experience";
+import { certifications } from "@/content/certifications";
 import { cn } from "@/lib/utils";
 
 const kindLabel: Record<string, string> = {
@@ -95,6 +96,22 @@ export function Experience() {
             </div>
           </Reveal>
         ))}
+      </div>
+
+      {/* Licenses & certifications */}
+      <div className="mt-16 border-t border-line pt-10">
+        <p className="section-label">Licenses & Certifications</p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {certifications.map((c) => (
+            <div key={c.title} className="card p-4">
+              <h4 className="text-sm font-medium text-ink">{c.title}</h4>
+              <p className="mt-1 text-xs text-ink-muted">{c.issuer}</p>
+              <p className="mt-1 font-mono text-2xs text-ink-faint">
+                Issued {c.issued}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );

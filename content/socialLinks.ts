@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Github, Linkedin, Youtube, Mail, FileText } from "lucide-react";
+import { Github, Linkedin, Youtube, Mail } from "lucide-react";
 
 export interface SocialLink {
   key: string;
@@ -25,11 +25,10 @@ export const socialLinks: SocialLink[] = [
   {
     key: "linkedin",
     label: "LinkedIn",
-    // TODO: replace with real LinkedIn profile URL.
-    href: "https://www.linkedin.com/in/hasan-basheer",
+    href: "https://www.linkedin.com/in/basheer-hasan-b0ab4b220/",
     icon: Linkedin,
-    handle: "in/hasan-basheer",
-    confirmed: false,
+    handle: "in/basheer-hasan",
+    confirmed: true,
   },
   {
     key: "youtube",
@@ -46,14 +45,6 @@ export const socialLinks: SocialLink[] = [
     href: "mailto:hasanbasheer01@gmail.com",
     icon: Mail,
     handle: "hasanbasheer01@gmail.com",
-    confirmed: true,
-  },
-  {
-    key: "resume",
-    label: "Resume",
-    href: "/Hasan-Basheer-Resume.pdf",
-    icon: FileText,
-    handle: "PDF",
     confirmed: true,
   },
 ];

@@ -56,7 +56,8 @@ NEXT_PUBLIC_SITE_URL=https://your-domain
 ANTHROPIC_API_KEY=            # optional
 ```
 
-## Resume
+## Source of truth
 
-The source of truth for factual content is `public/Hasan-Basheer-Resume.pdf`,
-served at `/Hasan-Basheer-Resume.pdf`.
+Factual content (experience, education, skills) is sourced from Hasan's
+LinkedIn profile: https://www.linkedin.com/in/basheer-hasan-b0ab4b220/. There
+is no downloadable resume on the site.

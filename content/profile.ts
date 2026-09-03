@@ -1,7 +1,7 @@
 /**
  * Core identity and narrative copy.
- * Facts here are sourced from Hasan Basheer's resume. Anything not yet
- * confirmed is marked with `TODO:` so it can be filled in without touching UI.
+ * Facts here are sourced from Hasan Basheer's LinkedIn profile. Anything not
+ * yet confirmed is marked with `TODO:` so it can be filled in without touching UI.
  */
 
 export interface AboutCard {
@@ -12,7 +12,17 @@ export interface AboutCard {
 export const profile = {
   name: "Hasan Basheer",
   shortName: "Hasan B",
-  roles: ["AI Engineer", "Software Engineer", "AI Product Builder"],
+  // Verbatim LinkedIn headline, split on "|".
+  roles: [
+    "ENOVIA & 3DEXPERIENCE Developer",
+    "Full Stack Developer",
+    "Widget",
+    "GenAI Architect",
+    "AI Automation & Agentic AI Developer",
+    "Building AI Products & AI Agents",
+    "SaaS",
+    "Rank Holder in Electrical Engineering from PSNACET",
+  ],
   currentTitle: "Engineer – Developer",
   currentCompany: "Renault Nissan Technology & Business Centre India",
   location: "Dindigul, India",
@@ -22,40 +32,41 @@ export const profile = {
   availability: "Open to AI, software and product-building opportunities",
 
   tagline:
-    "Building intelligent software at the intersection of AI, engineering and automation.",
+    "ENOVIA & 3DEXPERIENCE engineer building toward LLMs, RAG and agentic AI.",
 
   heroPitch:
-    "I design and ship AI systems — RAG assistants, developer tools and automation — on top of a full-stack engineering foundation.",
+    "I build enterprise ENOVIA solutions by trade, and LLM-powered applications and AI agents by focus — combining full-stack engineering with Generative AI.",
 
   aboutLead:
-    "Full-stack engineer building practical AI systems that solve real engineering and software problems.",
+    "Full-stack ENOVIA engineer expanding into LLMs, RAG and AI agents.",
 
   aboutBody: [
-    "I work as a full-stack developer on the ENOVIA 3DEXPERIENCE platform at Renault Nissan Technology & Business Centre India, building enterprise widgets, backend services and automation for engineering teams.",
-    "Alongside that, I build AI applications — retrieval-augmented assistants, vector search pipelines and AI-powered tools — turning long documentation and manual workflows into something you can just ask.",
-    "The through-line: take a real engineering problem, design the system end to end, and use AI only where it genuinely adds value.",
+    "I'm a Software Developer with 3 years of experience in ENOVIA and the 3DEXPERIENCE platform, specializing in full-stack application development, widget development, and enterprise solutions.",
+    "My experience includes developing and maintaining ENOVIA widgets, building REST APIs, working with Java, Spring Boot, Vue.js, MQL, TCL, and Data Perspective Studio to deliver scalable and business-focused solutions. I enjoy solving technical challenges, optimizing existing applications, and building user-friendly interfaces.",
+    "I continuously expand my technical skills by learning modern software development practices and exploring Generative AI technologies. My current focus is on Python, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI agents, and AI-powered application development. My goal is to combine my enterprise application experience with AI to build intelligent software solutions.",
+    "I am always open to connecting with professionals, sharing knowledge, and exploring opportunities where I can learn, grow, and contribute.",
   ],
 
   aboutCards: [
     {
-      title: "AI Engineering",
-      body: "RAG pipelines, vector search, embeddings and LLM application architecture with LangChain and FAISS.",
+      title: "Enterprise PLM Engineering",
+      body: "Custom ENOVIA 3DEXPERIENCE widgets, REST APIs and Data Perspective Studio dashboards for enterprise engineering teams.",
     },
     {
-      title: "Software Engineering",
-      body: "Full-stack delivery with Java 8, Spring Boot, REST APIs, Vue.js and TypeScript in Agile teams.",
+      title: "Full-Stack Development",
+      body: "Backend services with Java, Spring Boot and REST APIs; frontend delivery with Vue.js, Angular and TypeScript.",
     },
     {
-      title: "PLM / Engineering",
-      body: "ENOVIA 3DEXPERIENCE customization, custom widgets, Data Perspectives and MQL / TCL scripting.",
+      title: "Generative AI & LLMs",
+      body: "RAG pipelines, vector search and LLM application design with LangChain, FAISS and prompt engineering.",
     },
     {
-      title: "Automation",
-      body: "Scripted automation of repetitive engineering workflows to remove manual steps and cut cycle time.",
+      title: "Agentic AI & Automation",
+      body: "Multi-agent systems with AutoGen, CrewAI and Google's Agent Development Kit, plus workflow automation with n8n, Playwright and PyAutoGUI.",
     },
     {
-      title: "AI Product Development",
-      body: "Taking AI ideas from prototype to usable product — pipelines, UX and deployment.",
+      title: "Engineering Foundation",
+      body: "A rank-holding B.E. in Electrical & Electronics Engineering and embedded systems internships (STM32, Arduino) underpin how I approach systems end to end.",
     },
   ] satisfies AboutCard[],
 };

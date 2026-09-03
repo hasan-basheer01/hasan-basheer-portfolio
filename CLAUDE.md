@@ -56,7 +56,9 @@ Anything not yet verified is marked with a `TODO:` comment and a `confirmed: fal
 flag. **Never fabricate** employers, dates, job titles, metrics, client names,
 awards, GitHub stars or technologies. Placeholders only.
 
-Source of truth for facts: `public/Hasan-Basheer-Resume.pdf`.
+Source of truth for facts: Hasan's LinkedIn profile
+(https://www.linkedin.com/in/basheer-hasan-b0ab4b220/). The site has no
+downloadable resume — do not reintroduce a Resume section, button, or PDF.
 
 ---
 
@@ -128,8 +130,10 @@ chore: ...
 
 ## Before Launch — open TODOs
 
-- Confirm GitHub / LinkedIn / YouTube URLs (`content/socialLinks.ts`, `content/github.ts`)
+- Confirm GitHub / YouTube URLs (`content/socialLinks.ts`, `content/github.ts`) — LinkedIn is confirmed
 - Add real project repo + demo links (`content/projects.ts`)
 - Replace placeholder content items with published posts (`content/contentFeed.ts`)
+- Add graduation/college photos and build out the Education gallery section
 - Set `NEXT_PUBLIC_SITE_URL` to the real domain
 - Decide whether to expose phone number (`content/profile.ts`)
+- There is no Resume section/download on this site by design — do not re-add one

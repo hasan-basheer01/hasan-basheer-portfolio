@@ -4,13 +4,14 @@
  * `links` with `confirmed: false` are placeholders to fill before launch.
  */
 
-export type ProjectStatus = "Live" | "Building" | "Prototype" | "Production";
+export type ProjectStatus = "Live" | "Building" | "Prototype" | "Production" | "Completed";
 export type ProjectCategory =
   | "AI Assistant"
   | "AI Product"
   | "Developer Tool"
   | "Engineering Automation"
-  | "Full-Stack Platform";
+  | "Full-Stack Platform"
+  | "Academic Project";
 
 export interface CaseStudySection {
   /** "01 — Problem", etc. */
@@ -38,7 +39,7 @@ export interface Project {
   status: ProjectStatus;
   featured: boolean;
   year: string;
-  context: "Personal project" | "Professional work";
+  context: "Personal project" | "Professional work" | "Academic project";
   stack: string[];
   highlights: string[];
   architecture?: ArchitectureStep[];
@@ -324,6 +325,134 @@ export const projects: Project[] = [
         key: "07 — Demo",
         title: "Internal",
         body: ["This is proprietary enterprise work; details are kept high-level."],
+      },
+    ],
+    links: [],
+  },
+
+  {
+    slug: "automated-paper-bag-machine",
+    name: "Automated Paper Bag Making Machine",
+    tagline:
+      "A semi-automatic machine that folds and pastes A4 waste paper into paper bags, replacing a fully manual process.",
+    category: "Academic Project",
+    status: "Completed",
+    featured: false,
+    year: "2023",
+    context: "Academic project",
+    stack: ["IR Sensor", "Servo Motors", "Embedded C", "Automation"],
+    highlights: [
+      "Reuses waste paper instead of recycled stock",
+      "IR sensor triggers automatic operation",
+      "Servo motors fold and paste the paper",
+      "Converts a manual process into semi-automatic production",
+    ],
+    caseStudy: [
+      {
+        key: "01 — Problem",
+        title: "Manual paper bag production is slow and low-volume",
+        body: [
+          "Traditional paper bag manufacturing was a fully manual process, limiting production speed and making small-scale reuse of waste paper impractical.",
+        ],
+      },
+      {
+        key: "02 — Approach",
+        title: "Sensor-triggered semi-automation",
+        body: [
+          "An IR sensor detects a fed sheet of A4-size waste paper and triggers servo motors that fold and paste it into a finished bag, removing the manual folding and pasting steps.",
+        ],
+      },
+      {
+        key: "03 — Result",
+        title: "From manual craft to semi-automatic production",
+        body: [
+          "The machine turns a fully manual process into a semi-automatic one, increasing throughput and making small-scale reuse of waste paper for bag production practical.",
+        ],
+      },
+    ],
+    links: [],
+  },
+
+  {
+    slug: "human-follower-robot",
+    name: "Human Follower Robot",
+    tagline:
+      "A robot that tracks and follows a person using ultrasonic and infrared sensing while avoiding obstacles.",
+    category: "Academic Project",
+    status: "Completed",
+    featured: false,
+    year: "2022",
+    context: "Academic project",
+    stack: ["Ultrasonic Sensor", "Infrared Sensor", "Embedded C", "Robotics"],
+    highlights: [
+      "Tracks and follows a person across varying distances",
+      "Takes turns to stay aligned with the person",
+      "Avoids collisions using obstacle detection",
+    ],
+    caseStudy: [
+      {
+        key: "01 — Problem",
+        title: "Assistive robots need to track a person reliably",
+        body: [
+          "The goal was a robot that could help with everyday tasks by reliably following a specific person through turns, without colliding with them or nearby obstacles.",
+        ],
+      },
+      {
+        key: "02 — Approach",
+        title: "Ultrasonic distance + infrared obstacle detection",
+        body: [
+          "An ultrasonic sensor tracks the person's distance and direction, while an infrared sensor detects obstacles in the robot's path so it can avoid collisions.",
+        ],
+      },
+      {
+        key: "03 — Result",
+        title: "A robot that follows, turns and avoids collisions",
+        body: [
+          "The robot follows a person across varying degrees of turns while avoiding collisions between itself and the person it is tracking.",
+        ],
+      },
+    ],
+    links: [],
+  },
+
+  {
+    slug: "bluetooth-line-follower-robot",
+    name: "Wireless Bluetooth Controlled Robot & Line Follower Robot",
+    tagline:
+      "Two robots built for a college SEEE event — one smartphone-controlled over Bluetooth, one that autonomously follows a line via IR sensing.",
+    category: "Academic Project",
+    status: "Completed",
+    featured: false,
+    year: "2022",
+    context: "Academic project",
+    stack: ["Bluetooth", "Arduino UNO", "IR Sensor", "Android App"],
+    highlights: [
+      "Smartphone app sends movement commands over Bluetooth",
+      "Robot moves forward, backward, left, right and stops",
+      "Line follower reads a black/white line contrast via IR sensor",
+      "Arduino UNO drives the motor logic for both robots",
+    ],
+    caseStudy: [
+      {
+        key: "01 — Problem",
+        title: "Two robotics events, two control problems",
+        body: [
+          "Built for the Robot Race and Line Follower Robot events organized by the Society of Electrical and Electronics Engineers (SEEE) at PSNA College — one needing remote human control, the other needing full autonomy.",
+        ],
+      },
+      {
+        key: "02 — Approach",
+        title: "Bluetooth teleoperation and IR line-sensing",
+        body: [
+          "The Bluetooth robot pairs with an Android app that sends direct movement commands. The line follower reads a black line on a white surface (or vice versa) through an IR sensor, with an Arduino UNO driving the motors based on that signal.",
+        ],
+      },
+      {
+        key: "03 — Result",
+        title: "A controlled robot and an autonomous one",
+        body: [
+          "Both robots were built and entered in their respective PSNA SEEE events — one operator-controlled, one self-navigating.",
+        ],
       },
     ],
     links: [],

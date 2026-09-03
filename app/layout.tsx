@@ -17,7 +17,7 @@ const mono = JetBrains_Mono({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://hasanbasheer.dev";
 const description =
-  "Hasan Basheer — AI Engineer and Software Engineer building RAG assistants, developer tools and engineering automation with Python, LangChain, FAISS and full-stack systems.";
+  "Hasan Basheer — ENOVIA & 3DEXPERIENCE developer and GenAI/agentic AI builder, working with Python, LangChain, RAG, AutoGen, CrewAI and full-stack systems.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -29,15 +29,18 @@ export const metadata: Metadata = {
   keywords: [
     "Hasan Basheer",
     "Hasan B",
-    "AI Engineer",
+    "GenAI Architect",
+    "Agentic AI Developer",
     "Software Engineer",
     "Generative AI",
     "RAG",
     "LangChain",
-    "FAISS",
+    "AutoGen",
+    "CrewAI",
     "Python",
     "PLM",
     "ENOVIA",
+    "3DEXPERIENCE",
     "MQL",
     "TCL",
     "AI Automation",
@@ -87,7 +90,9 @@ const jsonLd = {
   knowsAbout: [
     "Generative AI",
     "Retrieval-Augmented Generation",
-    "Vector Search",
+    "Agentic AI",
+    "AutoGen",
+    "CrewAI",
     "LangChain",
     "Python",
     "Software Engineering",

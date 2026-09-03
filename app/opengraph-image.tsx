@@ -1,7 +1,8 @@
 import { ImageResponse } from "next/og";
+import { profile } from "@/content/profile";
 
 export const runtime = "edge";
-export const alt = "Hasan Basheer — AI Engineer & Software Engineer";
+export const alt = `${profile.name} — ${profile.roles[3]} · ${profile.roles[1]}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -31,23 +32,24 @@ export default function OgImage() {
             color: "#9a9aa6",
           }}
         >
-          Hasan Basheer
+          {profile.name}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div
             style={{
               display: "flex",
-              fontSize: 76,
+              flexWrap: "wrap",
+              fontSize: 64,
               fontWeight: 700,
               color: "#ededf1",
-              lineHeight: 1.1,
+              lineHeight: 1.15,
+              maxWidth: 1000,
             }}
           >
-            AI Engineer · Software Engineer
+            {profile.roles[3]} · {profile.roles[1]}
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#9a9aa6", maxWidth: 900 }}>
-            Building intelligent software at the intersection of AI, engineering
-            and automation.
+            {profile.heroPitch}
           </div>
         </div>
         <div style={{ display: "flex", gap: 16, fontSize: 22, color: "#818cf8" }}>
@@ -55,9 +57,9 @@ export default function OgImage() {
           <span style={{ color: "#3a3a44" }}>/</span>
           <span>LangChain</span>
           <span style={{ color: "#3a3a44" }}>/</span>
-          <span>FAISS</span>
+          <span>AutoGen</span>
           <span style={{ color: "#3a3a44" }}>/</span>
-          <span>Python</span>
+          <span>CrewAI</span>
           <span style={{ color: "#3a3a44" }}>/</span>
           <span>ENOVIA · MQL · TCL</span>
         </div>
