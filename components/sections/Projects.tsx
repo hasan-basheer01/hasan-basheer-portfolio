@@ -20,19 +20,44 @@ function CaseStudy({ project }: { project: Project }) {
               {s.key}
             </p>
             <h4 className="mt-1.5 text-sm font-medium text-ink">{s.title}</h4>
-            {s.body.map((b, i) => (
-              <p
-                key={i}
-                className="mt-2 max-w-prose text-xs leading-relaxed text-ink-muted"
-              >
-                {b}
-              </p>
-            ))}
+            <ul className="mt-2.5 max-w-prose space-y-1.5">
+              {s.body.map((b, i) => (
+                <li
+                  key={i}
+                  className="flex gap-2 text-xs leading-relaxed text-ink-muted"
+                >
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-soft/70" />
+                  {b}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
 
       <div className="space-y-8">
+        {(project.image || project.video) && (
+          <div className="frame-tech overflow-hidden rounded-lg border border-line">
+            {project.video ? (
+              <video
+                src={project.video.src}
+                aria-label={project.video.alt}
+                controls
+                muted
+                loop
+                playsInline
+                className="w-full"
+              />
+            ) : project.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={project.image.src}
+                alt={project.image.alt}
+                className="w-full object-cover"
+              />
+            ) : null}
+          </div>
+        )}
         {project.architecture && (
           <div>
             <p className="mb-4 font-mono text-2xs uppercase tracking-[0.2em] text-ink-faint">
@@ -66,9 +91,9 @@ function CaseStudy({ project }: { project: Project }) {
                 target={l.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs transition-colors",
+                  "click-glow inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs transition-colors",
                   l.confirmed
-                    ? "border-line-strong text-ink hover:border-accent-soft hover:text-white"
+                    ? "border-line-strong text-ink hover:border-accent-soft"
                     : "border-line text-ink-faint hover:text-ink-muted",
                 )}
                 title={l.confirmed ? undefined : "Link pending — to be updated"}
@@ -99,12 +124,12 @@ function ProjectEntry({ project, index }: { project: Project; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="card overflow-hidden"
+      className="card frame-tech overflow-hidden"
     >
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full flex-col gap-4 p-5 text-left transition-colors hover:bg-bg-overlay/40 lg:p-6"
+        className="click-glow flex w-full flex-col gap-4 p-5 text-left transition-colors hover:bg-bg-overlay/40 lg:p-6"
         aria-expanded={open}
       >
         <div className="flex flex-wrap items-center gap-2.5">
@@ -114,7 +139,6 @@ function ProjectEntry({ project, index }: { project: Project; index: number }) {
           <StatusBadge status={project.status} />
           <Tag>{project.category}</Tag>
           <Tag>{project.context}</Tag>
-          <span className="font-mono text-2xs text-ink-faint">{project.year}</span>
         </div>
 
         <div className="flex items-start justify-between gap-4">

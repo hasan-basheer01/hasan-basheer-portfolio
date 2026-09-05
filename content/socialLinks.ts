@@ -1,11 +1,12 @@
-import type { LucideIcon } from "lucide-react";
-import { Github, Linkedin, Youtube, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { SiX, SiReddit } from "react-icons/si";
+import type { TechIcon } from "@/lib/techIcons";
 
 export interface SocialLink {
   key: string;
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: TechIcon;
   /** Shown in the footer / contact grid. */
   handle: string;
   /** TODO links still need real URLs before launch. */
@@ -16,11 +17,11 @@ export const socialLinks: SocialLink[] = [
   {
     key: "github",
     label: "GitHub",
-    // TODO: confirm GitHub profile URL.
+    // Confirmed via the agentic-email-support-system repo link.
     href: "https://github.com/hasan-basheer01",
     icon: Github,
     handle: "@hasan-basheer01",
-    confirmed: false,
+    confirmed: true,
   },
   {
     key: "linkedin",
@@ -31,13 +32,20 @@ export const socialLinks: SocialLink[] = [
     confirmed: true,
   },
   {
-    key: "youtube",
-    label: "YouTube",
-    // TODO: replace with real channel URL (or remove if unused).
-    href: "https://www.youtube.com/@hasanbasheer",
-    icon: Youtube,
-    handle: "@hasanbasheer",
-    confirmed: false,
+    key: "x",
+    label: "X",
+    href: "https://x.com/Hasan__Basheer",
+    icon: SiX,
+    handle: "@Hasan__Basheer",
+    confirmed: true,
+  },
+  {
+    key: "reddit",
+    label: "Reddit",
+    href: "https://www.reddit.com/user/HasanBasheer01/",
+    icon: SiReddit,
+    handle: "u/HasanBasheer01",
+    confirmed: true,
   },
   {
     key: "email",

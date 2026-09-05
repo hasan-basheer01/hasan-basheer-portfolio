@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Avatar } from "@/components/ui/Avatar";
 
 const LINKS = [
   { href: "#about", label: "About" },
   { href: "#expertise", label: "Expertise" },
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#ai-lab", label: "AI Lab" },
-  { href: "#currently-building", label: "Currently Building" },
-  { href: "#content", label: "Content" },
+  { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -68,7 +68,7 @@ export function Navbar() {
           className="group flex items-center gap-2 font-mono text-sm font-medium tracking-tight text-ink"
           onClick={() => setOpen(false)}
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-accent-cyan transition-transform group-hover:scale-125" />
+          <Avatar size={28} glow={false} />
           hasan_b
         </Link>
 
@@ -78,7 +78,7 @@ export function Navbar() {
               <a
                 href={l.href}
                 className={cn(
-                  "rounded-md px-3 py-2 text-xs font-medium transition-colors",
+                  "rounded-md px-3 py-2 text-xs font-medium transition-all duration-200 hover:[text-shadow:0_0_12px_rgba(0,243,255,0.55)]",
                   activeId === l.href.slice(1)
                     ? "text-ink"
                     : "text-ink-faint hover:text-ink-muted",
@@ -91,15 +91,16 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <a
             href="#contact"
-            className="hidden rounded-full bg-ink px-4 py-2 text-xs font-medium text-bg transition-colors hover:bg-white sm:inline-flex"
+            className="click-glow hidden rounded-full bg-ink px-4 py-2 text-xs font-medium text-bg transition-colors hover:opacity-90 sm:inline-flex"
           >
             Let&apos;s Build
           </a>
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink lg:hidden"
+            className="click-glow inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
@@ -124,7 +125,7 @@ export function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-sm text-ink-muted hover:bg-bg-overlay hover:text-ink"
+                    className="click-glow block rounded-lg px-3 py-3 text-sm text-ink-muted hover:bg-bg-overlay hover:text-ink"
                   >
                     {l.label}
                   </a>

@@ -34,7 +34,7 @@ export function Contact() {
           <Reveal delay={0.15}>
             <a
               href={`mailto:${profile.email}`}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-white"
+              className="click-glow glow-ring mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-bg transition-colors hover:opacity-90"
             >
               {profile.email}
               <ArrowUpRight size={15} />
@@ -56,7 +56,7 @@ export function Contact() {
                   href={l.href}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="inline-flex items-center gap-1.5 text-xs text-ink-faint transition-colors hover:text-ink"
+                  className="click-glow inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-xs text-ink-faint transition-colors hover:text-ink"
                 >
                   <l.icon size={14} />
                   {l.label}

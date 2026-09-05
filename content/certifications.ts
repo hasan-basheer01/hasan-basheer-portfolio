@@ -12,6 +12,13 @@ export interface Certification {
 
 export const certifications: Certification[] = [
   {
+    title: "CrewAI Buildathon — Winner",
+    issuer: "Generative AI Foundation × Social Eagle",
+    // TODO: exact issue date is illegible on the certificate photo — confirm and update.
+    issued: "2026",
+    skills: ["CrewAI", "Agentic AI", "Multi-Agent Systems"],
+  },
+  {
     title: "Embedded & IoT Programming (Internship)",
     issuer: "Tessolve",
     issued: "Jun 2023",

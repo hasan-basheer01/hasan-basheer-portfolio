@@ -17,43 +17,50 @@ const config: Config = {
     },
     extend: {
       colors: {
+        // Every token below reads a CSS custom property set in globals.css,
+        // so the whole palette flips when `.light` is toggled on <html>.
         bg: {
-          DEFAULT: "#08080a",
-          raised: "#0d0d10",
-          overlay: "#141418",
+          DEFAULT: "rgb(var(--bg) / <alpha-value>)",
+          raised: "rgb(var(--bg-raised) / <alpha-value>)",
+          overlay: "rgb(var(--bg-overlay) / <alpha-value>)",
         },
         line: {
-          DEFAULT: "rgba(255,255,255,0.08)",
-          strong: "rgba(255,255,255,0.14)",
+          DEFAULT: "var(--line)",
+          strong: "var(--line-strong)",
         },
         ink: {
-          DEFAULT: "#ededf1",
-          muted: "#9a9aa6",
-          faint: "#6a6a76",
+          DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+          muted: "rgb(var(--ink-muted) / <alpha-value>)",
+          faint: "rgb(var(--ink-faint) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "#6366f1",
-          soft: "#818cf8",
-          cyan: "#22d3ee",
+          // Primary highlight/CTA color — teal-cyan in dark mode, deeper teal in light mode for contrast.
+          DEFAULT: "rgb(var(--accent) / <alpha-value>)",
+          soft: "rgb(var(--accent-soft) / <alpha-value>)",
+          // Secondary accent — purple/magenta, used for diagrams and gradients.
+          cyan: "rgb(var(--accent-cyan) / <alpha-value>)",
+          // Tertiary accent — green, for status/build indicators.
+          green: "rgb(var(--accent-green) / <alpha-value>)",
         },
       },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "ui-sans-serif", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {
-        "2xs": ["0.6875rem", { lineHeight: "1rem" }],
+        "2xs": ["0.75rem", { lineHeight: "1.1rem" }],
       },
       maxWidth: {
         prose: "68ch",
       },
       backgroundImage: {
         "grid-lines":
-          "linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          "linear-gradient(to right, var(--grid-line) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)",
         "accent-gradient":
-          "linear-gradient(120deg, #818cf8 0%, #6366f1 40%, #22d3ee 100%)",
+          "linear-gradient(120deg, rgb(var(--accent)) 0%, rgb(var(--accent-soft)) 32%, rgb(var(--accent-warm)) 66%, rgb(var(--accent-cyan)) 100%)",
         "radial-glow":
-          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.18), transparent 70%)",
+          "radial-gradient(ellipse 80% 60% at 50% 0%, var(--radial-glow), transparent 70%)",
       },
       keyframes: {
         "fade-up": {
@@ -71,12 +78,17 @@ const config: Config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "gradient-shift": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
         "pulse-node": "pulse-node 3s ease-in-out infinite",
         "dash-flow": "dash-flow 1.2s linear infinite",
         marquee: "marquee 32s linear infinite",
+        "gradient-shift": "gradient-shift 5s ease-in-out infinite",
       },
     },
   },

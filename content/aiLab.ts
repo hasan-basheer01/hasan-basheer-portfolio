@@ -31,14 +31,6 @@ export const labEntries: LabEntry[] = [
     project: "enovia-ai-assistant",
   },
   {
-    title: "AI Video Shorts Maker",
-    category: "Video Intelligence",
-    status: "Building",
-    summary:
-      "Transcript-level moment scoring that picks the most postable 20 seconds of a long video.",
-    project: "ai-video-shorts",
-  },
-  {
     title: "Ask-My-Portfolio Assistant",
     category: "AI Assistants",
     status: "Prototype",

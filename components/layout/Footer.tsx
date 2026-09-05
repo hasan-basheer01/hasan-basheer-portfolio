@@ -19,7 +19,7 @@ export function Footer() {
               href={l.href}
               target={l.href.startsWith("http") ? "_blank" : undefined}
               rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="text-xs text-ink-faint transition-colors hover:text-ink"
+              className="click-glow rounded-full px-2 py-1 text-xs text-ink-faint transition-colors hover:text-ink"
             >
               {l.label}
             </a>

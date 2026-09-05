@@ -5,6 +5,7 @@ import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import { profile } from "@/content/profile";
 import { socialByKey } from "@/content/socialLinks";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Avatar } from "@/components/ui/Avatar";
 import { HeroVisual } from "@/components/visuals/HeroVisual";
 
 const github = socialByKey("github")!;
@@ -38,27 +39,38 @@ export function Hero() {
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.p
             variants={item}
-            className="section-label mb-6"
+            className="click-glow inline-flex w-fit items-center rounded-full border border-line bg-bg-overlay/40 px-3 py-1.5 font-mono text-xs font-medium"
           >
-            {profile.location} · {profile.availability}
+            <span className="gradient-text">{profile.greeting}</span>
           </motion.p>
+
+          <motion.div variants={item} className="mb-6 mt-4 flex items-center gap-4">
+            <Avatar size={64} />
+            <p className="section-label">
+              {profile.location} · {profile.availability}
+            </p>
+          </motion.div>
 
           <motion.h1
             variants={item}
             className="text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl md:text-6xl"
           >
             {profile.name.split(" ")[0]}{" "}
-            <span className="gradient-text text-shadow-glow">
+            <span className="gradient-text text-shadow-glow bg-[length:200%_auto] animate-gradient-shift">
               {profile.name.split(" ")[1]}
             </span>
           </motion.h1>
 
-          <motion.p
-            variants={item}
-            className="mt-4 font-mono text-sm text-ink-muted sm:text-base"
-          >
-            {profile.roles.join("  •  ")}
-          </motion.p>
+          <motion.div variants={item} className="mt-5 flex flex-wrap gap-1.5">
+            {profile.headlineItems.map((r) => (
+              <span
+                key={r}
+                className="rounded border border-line bg-bg-overlay/40 px-2 py-1 font-mono text-2xs text-ink-muted"
+              >
+                {r}
+              </span>
+            ))}
+          </motion.div>
 
           <motion.p
             variants={item}
@@ -88,7 +100,7 @@ export function Hero() {
               href={github.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
+              className="click-glow inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 transition-colors hover:text-ink"
             >
               <Github size={14} /> GitHub
             </a>
@@ -96,7 +108,7 @@ export function Hero() {
               href={linkedin.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-ink"
+              className="click-glow inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 transition-colors hover:text-ink"
             >
               <Linkedin size={14} /> LinkedIn
             </a>
@@ -109,14 +121,12 @@ export function Hero() {
           transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="relative"
         >
-          <div className="card glow-ring overflow-hidden p-4 sm:p-6">
-            <div className="mb-4 flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-              <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
-              <span className="ml-2 font-mono text-2xs text-ink-faint">
-                rag_pipeline.py
+          <div className="card frame-tech overflow-hidden p-4 sm:p-6">
+            <div className="mb-4 flex items-center justify-between border-b border-line pb-3">
+              <span className="font-mono text-2xs text-ink-faint">
+                <span className="text-accent-soft">FILE</span> — hasan_b.profile
               </span>
+              <span className="font-mono text-2xs text-ink-faint">REV.01</span>
             </div>
             <HeroVisual />
           </div>

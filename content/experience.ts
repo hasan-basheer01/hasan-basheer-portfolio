@@ -7,43 +7,13 @@ export interface TimelineEntry {
   period: string;
   title: string;
   org: string;
-  kind: "work" | "education" | "focus";
+  kind: "work" | "education" | "focus" | "achievement";
   points: string[];
   tags?: string[];
+  image?: { src: string; alt: string };
 }
 
 export const timeline: TimelineEntry[] = [
-  {
-    period: "2019 – 2023",
-    title: "B.E. Electrical & Electronics Engineering",
-    org: "PSNA College of Engineering & Technology, Dindigul",
-    kind: "education",
-    points: [
-      "First Class with Distinction · Rank Holder · CGPA 8.81.",
-      "IEEE Student Chapter · Electric Circuit Analysis, Power Systems, Microprocessors & Microcontrollers, Embedded Systems.",
-    ],
-    tags: ["Engineering foundation"],
-  },
-  {
-    period: "Feb 2022 – May 2022",
-    title: "Embedded Systems",
-    org: "Graspear Solutions Pvt Ltd · Internship (Hybrid, Madurai)",
-    kind: "work",
-    points: [
-      "Embedded C programming fundamentals and circuit simulation with Proteus.",
-    ],
-    tags: ["Embedded C", "Proteus", "Internship"],
-  },
-  {
-    period: "Dec 2022 – May 2023",
-    title: "Embedded System and IoT",
-    org: "Tessolve · Internship (Remote, Bengaluru)",
-    kind: "work",
-    points: [
-      "Embedded systems fundamentals with STM32 and Embedded C programming.",
-    ],
-    tags: ["STM32", "Embedded Systems", "Internship"],
-  },
   {
     period: "Oct 2023 – Present",
     title: "Engineer – Developer",
@@ -61,17 +31,66 @@ export const timeline: TimelineEntry[] = [
     tags: ["ENOVIA", "3DEXPERIENCE", "Full-Stack", "MQL / TCL", "REST APIs"],
   },
   {
+    // TODO: certificate photo shows "Date of Issue" but the exact day/month is
+    // illegible in the source photo — confirm and update the period.
+    period: "2026",
+    title: "Winner — CrewAI Buildathon",
+    org: "Generative AI Foundation × Social Eagle",
+    kind: "achievement",
+    points: [
+      "Won the CrewAI Buildathon, organized under the Generative AI Foundation.",
+      "Recognized for architecting an autonomous multi-agent solution powered by CrewAI.",
+    ],
+    tags: ["CrewAI", "Agentic AI", "Buildathon"],
+    image: {
+      src: "/crewai-buildathon-certificate.jpg",
+      alt: "Hasan Basheer (in white) with three teammates, holding his Certificate of Achievement for winning the CrewAI Buildathon, organized under the Generative AI Foundation.",
+    },
+  },
+  {
     period: "2024 – Present",
     title: "Building AI systems",
     org: "Personal projects",
     kind: "focus",
     points: [
       "RAG assistant for ENOVIA MQL / TCL — retrieval, vector search and script generation.",
-      "AI Video Shorts Maker — an AI product turning long-form video into short clips.",
+      "Agentic email support system built with CrewAI — listens for emails, logs details to Google Sheets and relays them onward.",
       "Experiments with agentic AI (AutoGen, CrewAI, Google ADK) and workflow automation (n8n, Playwright, PyAutoGUI).",
     ],
     tags: ["Generative AI", "RAG", "Agentic AI"],
   },
+  {
+    period: "Dec 2022 – May 2023",
+    title: "Embedded System and IoT",
+    org: "Tessolve · Internship (Remote, Bengaluru)",
+    kind: "work",
+    points: [
+      "Embedded systems fundamentals with STM32 and Embedded C programming.",
+    ],
+    tags: ["STM32", "Embedded Systems", "Internship"],
+  },
+  {
+    period: "Feb 2022 – May 2022",
+    title: "Embedded Systems",
+    org: "Graspear Solutions Pvt Ltd · Internship (Hybrid, Madurai)",
+    kind: "work",
+    points: [
+      "Embedded C programming fundamentals and circuit simulation with Proteus.",
+    ],
+    tags: ["Embedded C", "Proteus", "Internship"],
+  },
+  {
+    period: "2019 – 2023",
+    title: "B.E. Electrical & Electronics Engineering",
+    org: "PSNA College of Engineering & Technology, Dindigul",
+    kind: "education",
+    points: [
+      "First Class with Distinction · Rank Holder · CGPA 8.81.",
+      "IEEE Student Chapter · Electric Circuit Analysis, Power Systems, Microprocessors & Microcontrollers, Embedded Systems.",
+    ],
+    tags: ["Engineering foundation"],
+  },
+  // TODO: add school education entry once details (name, board, years) are confirmed.
 ];
 
 /** The story arc rendered as a horizontal / vertical progression. */

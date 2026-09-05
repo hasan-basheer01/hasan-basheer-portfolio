@@ -13,6 +13,7 @@ const kindLabel: Record<string, string> = {
   work: "Work",
   education: "Education",
   focus: "Focus",
+  achievement: "Achievement",
 };
 
 export function Experience() {
@@ -63,33 +64,45 @@ export function Experience() {
                 <span
                   className={cn(
                     "mt-2 inline-block rounded border border-line px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider",
-                    entry.kind === "focus"
-                      ? "text-accent-cyan"
-                      : "text-ink-faint",
+                    entry.kind === "focus" && "text-accent-cyan",
+                    entry.kind === "achievement" && "text-accent-green",
+                    entry.kind !== "focus" && entry.kind !== "achievement" && "text-ink-faint",
                   )}
                 >
                   {kindLabel[entry.kind]}
                 </span>
               </div>
-              <div>
-                <h3 className="text-sm font-medium text-ink">{entry.title}</h3>
-                <p className="text-xs text-ink-muted">{entry.org}</p>
-                <ul className="mt-3 space-y-1.5">
-                  {entry.points.map((p) => (
-                    <li
-                      key={p}
-                      className="flex gap-2 text-xs leading-relaxed text-ink-muted"
-                    >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-faint" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                {entry.tags && (
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {entry.tags.map((t) => (
-                      <Tag key={t}>{t}</Tag>
+              <div className={cn(entry.image && "grid gap-5 sm:grid-cols-[1fr_auto]")}>
+                <div>
+                  <h3 className="text-sm font-medium text-ink">{entry.title}</h3>
+                  <p className="text-xs text-ink-muted">{entry.org}</p>
+                  <ul className="mt-3 space-y-1.5">
+                    {entry.points.map((p) => (
+                      <li
+                        key={p}
+                        className="flex gap-2 text-xs leading-relaxed text-ink-muted"
+                      >
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-faint" />
+                        {p}
+                      </li>
                     ))}
+                  </ul>
+                  {entry.tags && (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {entry.tags.map((t) => (
+                        <Tag key={t}>{t}</Tag>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {entry.image && (
+                  <div className="frame-tech aspect-[900/1599] w-40 shrink-0 overflow-hidden rounded-lg border border-line bg-bg-raised/60 sm:w-48">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={entry.image.src}
+                      alt={entry.image.alt}
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                 )}
               </div>
@@ -101,12 +114,14 @@ export function Experience() {
       {/* Licenses & certifications */}
       <div className="mt-16 border-t border-line pt-10">
         <p className="section-label">Licenses & Certifications</p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {certifications.map((c) => (
-            <div key={c.title} className="card p-4">
-              <h4 className="text-sm font-medium text-ink">{c.title}</h4>
-              <p className="mt-1 text-xs text-ink-muted">{c.issuer}</p>
-              <p className="mt-1 font-mono text-2xs text-ink-faint">
+            <div key={c.title} className="frame-tech card p-5">
+              <h4 className="text-base font-medium leading-snug text-ink">
+                {c.title}
+              </h4>
+              <p className="mt-1.5 text-sm text-ink-muted">{c.issuer}</p>
+              <p className="mt-1.5 font-mono text-xs text-ink-faint">
                 Issued {c.issued}
               </p>
             </div>

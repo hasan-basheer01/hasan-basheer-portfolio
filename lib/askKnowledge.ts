@@ -9,7 +9,6 @@ import { projects } from "@/content/projects";
 import { skills, domains } from "@/content/skills";
 import { timeline, journey } from "@/content/experience";
 import { labEntries } from "@/content/aiLab";
-import { currentlyBuilding } from "@/content/currentlyBuilding";
 
 export function buildKnowledgeBase(): string {
   const lines: string[] = [];
@@ -60,20 +59,6 @@ export function buildKnowledgeBase(): string {
   labEntries.forEach((e) =>
     lines.push(`- ${e.title} [${e.category}, ${e.status}]: ${e.summary}`),
   );
-  lines.push("");
-
-  lines.push("## Currently building");
-  currentlyBuilding.forEach((b) => {
-    lines.push(
-      `- ${b.name} [${b.status}]: ${b.summary} Pipeline: ${b.pipeline.join(" -> ")}. Done: ${b.progress
-        .filter((s) => s.done)
-        .map((s) => s.label)
-        .join(", ")}. Remaining: ${b.progress
-        .filter((s) => !s.done)
-        .map((s) => s.label)
-        .join(", ")}.`,
-    );
-  });
 
   return lines.join("\n");
 }
@@ -82,7 +67,6 @@ export const SUGGESTED_QUESTIONS = [
   "What AI projects has Hasan built?",
   "What is the ENOVIA AI Assistant?",
   "What technologies does Hasan use?",
-  "What is Hasan currently building?",
   "Tell me about his RAG experience.",
   "What is his software engineering background?",
 ];
@@ -96,13 +80,7 @@ export function localAnswer(question: string): string {
   const has = (...terms: string[]) => terms.some((t) => q.includes(t));
 
   if (has("currently building", "working on now", "right now", "current project")) {
-    const b = currentlyBuilding[0];
-    return `Right now Hasan is building the ${b.name} (${b.status}). ${b.summary} The pipeline is ${b.pipeline.join(
-      " → ",
-    )}. Done so far: ${b.progress.filter((s) => s.done).map((s) => s.label).join(", ")}. Still to do: ${b.progress
-      .filter((s) => !s.done)
-      .map((s) => s.label)
-      .join(", ")}.`;
+    return `Right now Hasan is building the ENOVIA MQL / TCL Assistant (Prototype) and experimenting with agentic AI frameworks — AutoGen, CrewAI and Google's Agent Development Kit.`;
   }
 
   if (has("enovia", "mql", "tcl", "assistant")) {
@@ -110,13 +88,6 @@ export function localAnswer(question: string): string {
     return `${p.name}: ${p.tagline} It is a hybrid RAG pipeline — documentation is embedded into a local FAISS index, queries are retrieved against with semantic + keyword search, and an LLM answers with page-level citations and can generate a runnable MQL/TCL script. Stack: ${p.stack.join(
       ", ",
     )}.`;
-  }
-
-  if (has("video", "shorts", "clip", "youtube")) {
-    const p = projects.find((x) => x.slug === "ai-video-shorts")!;
-    return `${p.name}: ${p.tagline} Pipeline: ${p.architecture
-      ?.map((s) => s.label)
-      .join(" → ")}. It bakes in short-form retention rules — start on the strongest moment, ~2s pre-roll, captions throughout. Status: ${p.status}.`;
   }
 
   if (has("rag", "retrieval", "vector", "embedding", "faiss")) {
@@ -152,5 +123,5 @@ export function localAnswer(question: string): string {
     return `You can reach Hasan at ${profile.email}. ${profile.availability}.`;
   }
 
-  return `I can answer questions about Hasan's AI projects, his RAG and engineering work, the technologies he uses, and what he's currently building. Try one of the suggested questions, or ask about the ENOVIA AI Assistant or the AI Video Shorts Maker.`;
+  return `I can answer questions about Hasan's AI projects, his RAG and engineering work, the technologies he uses, and what he's currently building. Try one of the suggested questions, or ask about the ENOVIA AI Assistant.`;
 }

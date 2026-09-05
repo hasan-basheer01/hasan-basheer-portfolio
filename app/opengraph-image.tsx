@@ -16,11 +16,11 @@ export default function OgImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#08080a",
+          background: "#050505",
           padding: 80,
           fontFamily: "sans-serif",
           backgroundImage:
-            "radial-gradient(ellipse 90% 60% at 50% 0%, rgba(99,102,241,0.28), transparent 70%)",
+            "radial-gradient(ellipse 90% 60% at 50% 0%, rgba(0,243,255,0.28), transparent 70%)",
         }}
       >
         <div
@@ -52,7 +52,7 @@ export default function OgImage() {
             {profile.heroPitch}
           </div>
         </div>
-        <div style={{ display: "flex", gap: 16, fontSize: 22, color: "#818cf8" }}>
+        <div style={{ display: "flex", gap: 16, fontSize: 22, color: "#00f3ff" }}>
           <span>RAG</span>
           <span style={{ color: "#3a3a44" }}>/</span>
           <span>LangChain</span>

@@ -45,14 +45,99 @@ export interface Project {
   architecture?: ArchitectureStep[];
   caseStudy: CaseStudySection[];
   links: ProjectLink[];
+  /** Real photo of the build — path under /public. */
+  image?: { src: string; alt: string };
+  /** Real demo clip — path under /public. Rendered muted (audio removed at source). */
+  video?: { src: string; alt: string };
 }
 
 export const projects: Project[] = [
   {
+    slug: "enovia-widgets",
+    name: "ENOVIA 3DEXPERIENCE Widget Platform",
+    tagline: "Custom widget development — requirements gathering, business collaboration, end-to-end delivery.",
+    category: "Full-Stack Platform",
+    status: "Production",
+    featured: true,
+    year: "2023 – Present",
+    context: "Professional work",
+    stack: [
+      "Vue.js",
+      "Vuetify",
+      "TypeScript",
+      "Java 8",
+      "Spring Boot",
+      "REST APIs",
+      "SQL",
+      "MQL",
+      "TCL",
+      "ENOVIA 3DEXPERIENCE",
+    ],
+    highlights: [
+      "Gathers requirements directly from business stakeholders and proposes end-to-end solutions",
+      "Custom 3DEXPERIENCE widgets built with Vue.js and REST APIs",
+      "Data Perspectives configured for engineering data views",
+      "Backend services built and optimized with Java 8 and Spring Boot",
+      "MQL & TCL scripting for automation and efficiency",
+      "Delivered in Agile teams: features, bug fixing, testing, optimization",
+    ],
+    caseStudy: [
+      {
+        key: "01 — Problem",
+        title: "Standard PLM screens don't fit every engineering workflow",
+        body: [
+          "Engineering teams need views and actions the out-of-the-box 3DEXPERIENCE platform does not provide, and repetitive PLM operations eat time that should go to design work.",
+        ],
+      },
+      {
+        key: "02 — Thinking",
+        title: "Requirements first, then customize and automate",
+        body: [
+          "Every widget starts with gathering requirements directly from the business — understanding the workflow, then proposing and delivering an end-to-end solution rather than a generic screen.",
+          "Two levers from there: build custom widgets that put the right data and actions in front of engineers, and script the repetitive operations so they stop being manual.",
+        ],
+      },
+      {
+        key: "03 — Architecture",
+        title: "Vue widgets over Spring Boot services",
+        body: [
+          "Vue.js + Vuetify widgets embedded in 3DEXPERIENCE talk to Java 8 / Spring Boot REST services, with Data Perspectives shaping how engineering data is surfaced.",
+        ],
+      },
+      {
+        key: "04 — Implementation",
+        title: "The interesting parts",
+        body: [
+          "Custom widget development against platform APIs, backend service optimization, and MQL / TCL automation scripts for batch operations.",
+        ],
+      },
+      {
+        key: "05 — AI Layer",
+        title: "The bridge to the AI work",
+        body: [
+          "Living in MQL, TCL and ENOVIA documentation daily is exactly what motivated the AI assistant project — the pain was first-hand.",
+        ],
+      },
+      {
+        key: "06 — Result",
+        title: "Scalable, enterprise-ready delivery",
+        body: [
+          "Full-stack applications delivered into a real enterprise environment, with automation removing manual steps from engineering processes.",
+        ],
+      },
+      {
+        key: "07 — Demo",
+        title: "Internal",
+        body: ["This is proprietary enterprise work; details are kept high-level."],
+      },
+    ],
+    links: [],
+  },
+
+  {
     slug: "enovia-ai-assistant",
     name: "AI-Powered ENOVIA MQL & TCL Assistant",
-    tagline:
-      "A RAG assistant that reads ENOVIA documentation and writes ready-to-run MQL / TCL scripts.",
+    tagline: "Reads ENOVIA docs, writes ready-to-run MQL / TCL scripts.",
     category: "AI Assistant",
     status: "Prototype",
     featured: true,
@@ -146,201 +231,76 @@ export const projects: Project[] = [
     links: [
       // TODO: add real GitHub repo URL.
       { label: "GitHub", href: "https://github.com/hasan-basheer01", confirmed: false },
-      // TODO: add live demo / video URL if available.
-      { label: "Live Demo", href: "#", confirmed: false },
+      {
+        label: "LinkedIn Post",
+        href: "https://www.linkedin.com/posts/basheer-hasan-b0ab4b220_enovia-plm-mql-activity-7500252892910546944-bCiL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADey2HoBX5mt6QxPtXWNZqYRAmAeLpi9NPo",
+        confirmed: true,
+      },
     ],
   },
 
   {
-    slug: "ai-video-shorts",
-    name: "AI Video Shorts Maker",
-    tagline:
-      "Turn long-form video into short, retention-optimized clips — automatically.",
+    slug: "agentic-email-support-system",
+    name: "Agentic Email Support System",
+    tagline: "CrewAI agents that read incoming support emails, log them to a Google Sheet, and route the details onward by email.",
     category: "AI Product",
-    status: "Building",
+    status: "Completed",
     featured: true,
-    year: "2025",
+    year: "2024",
     context: "Personal project",
-    stack: [
-      "Python",
-      "Transcription",
-      "LLM Content Analysis",
-      "Video Processing",
-      "OpenAI",
-      "FastAPI",
-    ],
+    stack: ["Python", "CrewAI", "Agentic AI", "Gmail API", "Google Sheets API", "Email Automation"],
     highlights: [
-      "YouTube URL import and direct video upload",
-      "Automatic transcription",
-      "AI analysis to find high-value moments",
-      "Clip selection with a strong first-frame hook",
-      "Captions burned in throughout",
-      "Short-form retention rules baked into the pipeline",
-    ],
-    architecture: [
-      { label: "YouTube URL / Upload", detail: "Import from a link or upload a file directly." },
-      { label: "Video Processing", detail: "Normalize, segment and prepare the source video." },
-      { label: "Transcription", detail: "Generate a timestamped transcript." },
-      { label: "AI Content Analysis", detail: "Score segments for hook strength, payoff and clarity." },
-      { label: "High-Value Moment Detection", detail: "Rank candidate moments across the full video." },
-      { label: "Clip Selection", detail: "Cut starting on the strongest moment, ~2s pre-roll, no long intro." },
-      { label: "Captions", detail: "Burn in readable, high-contrast captions throughout." },
-      { label: "Short-Form Video", detail: "Export a vertical clip tuned for retention." },
+      "Multi-agent CrewAI system listens for incoming support emails",
+      "Extracts and logs email details into a Google Sheet automatically",
+      "Forwards the captured details to the relevant recipient by email",
+      "Removes the manual step of reading, logging and relaying support requests",
     ],
     caseStudy: [
       {
         key: "01 — Problem",
-        title: "Great long-form content, no time to clip it",
+        title: "Support emails need to be read, logged and relayed by hand",
         body: [
-          "Hours of podcasts, talks and tutorials contain dozens of share-worthy moments, but manually finding and cutting them is slow, repetitive editing work.",
-          "Most auto-clip tools produce clips that open weakly and lose the viewer in the first two seconds.",
+          "Incoming support emails had to be manually opened, key details copied into a tracking sheet, and then relayed to the right person — a repetitive task with no automation.",
         ],
       },
       {
-        key: "02 — Thinking",
-        title: "Treat it as a product, not a script",
+        key: "02 — Approach",
+        title: "Agents for listening, extraction and handoff",
         body: [
-          "The technical pipeline is only half the problem. The other half is a set of opinionated rules about what makes a short actually perform.",
-          "So retention heuristics are first-class: start on the strongest moment, ~2 seconds of pre-roll, no long introduction, a strong first frame, face plus visual context, high contrast, captions throughout, visual movement every few seconds.",
+          "A CrewAI multi-agent setup listens for new emails, extracts the relevant details, writes them into a Google Sheet, and sends the captured information on to the intended recipient by email.",
         ],
       },
       {
-        key: "03 — Architecture",
-        title: "A staged pipeline from source to short",
+        key: "03 — Result",
+        title: "Email support that logs and routes itself",
         body: [
-          "Import (URL or upload) → video processing → transcription → AI content analysis → moment detection → clip selection → captioning → export.",
-          "Each stage is independent so a weak result at one step can be inspected and re-run without redoing the whole job.",
+          "Incoming requests are captured, recorded and relayed automatically, removing the manual email-listening step from the support workflow.",
         ],
-      },
-      {
-        key: "04 — Implementation",
-        title: "The interesting parts",
-        body: [
-          "A scoring model over transcript segments that estimates hook strength and payoff, not just keyword density.",
-          "Clip boundary logic that snaps the start to the beginning of the strongest moment with a fixed short pre-roll.",
-          "A captioning pass tuned for legibility on mobile — high contrast, on screen the whole time.",
-        ],
-      },
-      {
-        key: "05 — AI Layer",
-        title: "Where AI actually earns its place",
-        body: [
-          "Transcription turns audio into something analyzable.",
-          "The LLM analysis layer is the judgment call — which 20 seconds of a 60-minute video are worth posting — which is exactly the part a human editor spends the most time on.",
-        ],
-      },
-      {
-        key: "06 — Result",
-        title: "From a link to a postable clip",
-        body: [
-          "Paste a YouTube URL or upload a video and get back short-form clips that open on their strongest moment with captions already applied.",
-          "It compresses an afternoon of editing into a short automated pass.",
-        ],
-      },
-      {
-        key: "07 — Demo",
-        title: "In progress",
-        body: ["Currently in active development — follow along in the Currently Building section."],
       },
     ],
     links: [
-      // TODO: add real GitHub repo URL.
-      { label: "GitHub", href: "https://github.com/hasan-basheer01", confirmed: false },
-    ],
-  },
-
-  {
-    slug: "enovia-widgets",
-    name: "ENOVIA 3DEXPERIENCE Widget Platform",
-    tagline:
-      "Enterprise widgets, backend services and automation for engineering teams at Renault Nissan.",
-    category: "Full-Stack Platform",
-    status: "Production",
-    featured: false,
-    year: "2023 – Present",
-    context: "Professional work",
-    stack: [
-      "Vue.js",
-      "Vuetify",
-      "TypeScript",
-      "Java 8",
-      "Spring Boot",
-      "REST APIs",
-      "SQL",
-      "MQL",
-      "TCL",
-      "ENOVIA 3DEXPERIENCE",
-    ],
-    highlights: [
-      "Custom 3DEXPERIENCE widgets built with Vue.js and REST APIs",
-      "Data Perspectives configured for engineering data views",
-      "Backend services built and optimized with Java 8 and Spring Boot",
-      "MQL & TCL scripting for automation and efficiency",
-      "Delivered in Agile teams: features, bug fixing, testing, optimization",
-    ],
-    caseStudy: [
       {
-        key: "01 — Problem",
-        title: "Standard PLM screens don't fit every engineering workflow",
-        body: [
-          "Engineering teams need views and actions the out-of-the-box 3DEXPERIENCE platform does not provide, and repetitive PLM operations eat time that should go to design work.",
-        ],
-      },
-      {
-        key: "02 — Thinking",
-        title: "Customize the platform, automate the repetition",
-        body: [
-          "Two levers: build custom widgets that put the right data and actions in front of engineers, and script the repetitive operations so they stop being manual.",
-        ],
-      },
-      {
-        key: "03 — Architecture",
-        title: "Vue widgets over Spring Boot services",
-        body: [
-          "Vue.js + Vuetify widgets embedded in 3DEXPERIENCE talk to Java 8 / Spring Boot REST services, with Data Perspectives shaping how engineering data is surfaced.",
-        ],
-      },
-      {
-        key: "04 — Implementation",
-        title: "The interesting parts",
-        body: [
-          "Custom widget development against platform APIs, backend service optimization, and MQL / TCL automation scripts for batch operations.",
-        ],
-      },
-      {
-        key: "05 — AI Layer",
-        title: "The bridge to the AI work",
-        body: [
-          "Living in MQL, TCL and ENOVIA documentation daily is exactly what motivated the AI assistant project — the pain was first-hand.",
-        ],
-      },
-      {
-        key: "06 — Result",
-        title: "Scalable, enterprise-ready delivery",
-        body: [
-          "Full-stack applications delivered into a real enterprise environment, with automation removing manual steps from engineering processes.",
-        ],
-      },
-      {
-        key: "07 — Demo",
-        title: "Internal",
-        body: ["This is proprietary enterprise work; details are kept high-level."],
+        label: "GitHub",
+        href: "https://github.com/hasan-basheer01/agentic-email-support-system",
+        confirmed: true,
       },
     ],
-    links: [],
   },
 
   {
     slug: "automated-paper-bag-machine",
     name: "Automated Paper Bag Making Machine",
-    tagline:
-      "A semi-automatic machine that folds and pastes A4 waste paper into paper bags, replacing a fully manual process.",
+    tagline: "A semi-automatic machine that folds and pastes waste paper into bags.",
     category: "Academic Project",
     status: "Completed",
     featured: false,
     year: "2023",
     context: "Academic project",
     stack: ["IR Sensor", "Servo Motors", "Embedded C", "Automation"],
+    image: {
+      src: "/paper-bag-machine.jpg",
+      alt: "The automated paper bag making machine — servo motors and an IR sensor mounted on a metal frame with a paper bag mid-fold.",
+    },
     highlights: [
       "Reuses waste paper instead of recycled stock",
       "IR sensor triggers automatic operation",
@@ -376,14 +336,17 @@ export const projects: Project[] = [
   {
     slug: "human-follower-robot",
     name: "Human Follower Robot",
-    tagline:
-      "A robot that tracks and follows a person using ultrasonic and infrared sensing while avoiding obstacles.",
+    tagline: "Tracks and follows a person using ultrasonic and infrared sensing.",
     category: "Academic Project",
     status: "Completed",
     featured: false,
     year: "2022",
     context: "Academic project",
     stack: ["Ultrasonic Sensor", "Infrared Sensor", "Embedded C", "Robotics"],
+    image: {
+      src: "/human-follower-robot.jpg",
+      alt: "The human follower robot — a wheeled chassis with an ultrasonic sensor, RFID reader and Arduino wiring on top.",
+    },
     highlights: [
       "Tracks and follows a person across varying distances",
       "Takes turns to stay aligned with the person",
@@ -418,14 +381,17 @@ export const projects: Project[] = [
   {
     slug: "bluetooth-line-follower-robot",
     name: "Wireless Bluetooth Controlled Robot & Line Follower Robot",
-    tagline:
-      "Two robots built for a college SEEE event — one smartphone-controlled over Bluetooth, one that autonomously follows a line via IR sensing.",
+    tagline: "Two SEEE-event robots: one Bluetooth-controlled, one an autonomous IR line follower.",
     category: "Academic Project",
     status: "Completed",
     featured: false,
     year: "2022",
     context: "Academic project",
     stack: ["Bluetooth", "Arduino UNO", "IR Sensor", "Android App"],
+    video: {
+      src: "/bluetooth-line-follower-robot.mp4",
+      alt: "The line follower robot navigating a chalk-drawn track (audio removed).",
+    },
     highlights: [
       "Smartphone app sends movement commands over Bluetooth",
       "Robot moves forward, backward, left, right and stops",

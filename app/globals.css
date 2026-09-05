@@ -5,6 +5,44 @@
 @layer base {
   :root {
     color-scheme: dark;
+
+    --bg: 5 5 5;
+    --bg-raised: 10 10 12;
+    --bg-overlay: 18 18 22;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.14);
+    --ink: 237 237 241;
+    --ink-muted: 154 154 166;
+    --ink-faint: 106 106 118;
+    --accent: 0 243 255;
+    --accent-soft: 125 250 255;
+    --accent-cyan: 188 19 254;
+    --accent-green: 10 255 10;
+    --accent-warm: 255 61 129;
+    --grid-line: rgba(255, 255, 255, 0.05);
+    --radial-glow: rgba(0, 243, 255, 0.18);
+    --hover-lift: rgba(255, 255, 255, 0.12);
+  }
+
+  :root.light {
+    color-scheme: light;
+
+    --bg: 255 255 255;
+    --bg-raised: 247 247 250;
+    --bg-overlay: 239 239 245;
+    --line: rgba(15, 15, 20, 0.1);
+    --line-strong: rgba(15, 15, 20, 0.18);
+    --ink: 16 16 22;
+    --ink-muted: 82 82 96;
+    --ink-faint: 128 128 142;
+    --accent: 8 137 168;
+    --accent-soft: 14 110 148;
+    --accent-cyan: 147 51 234;
+    --accent-green: 22 150 74;
+    --accent-warm: 225 29 72;
+    --grid-line: rgba(15, 15, 20, 0.06);
+    --radial-glow: rgba(8, 137, 168, 0.14);
+    --hover-lift: rgba(15, 15, 20, 0.08);
   }
 
   * {
@@ -14,6 +52,9 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Base type was reading too small on both laptop and mobile — bump the
+       root size so every rem-based Tailwind utility scales up with it. */
+    font-size: 17px;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -32,6 +73,7 @@
   body {
     @apply bg-bg text-ink font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
@@ -40,12 +82,16 @@
   }
 
   :focus-visible {
-    outline: 2px solid theme("colors.accent.soft");
+    outline: 2px solid theme("colors.accent.DEFAULT");
     outline-offset: 3px;
     border-radius: 3px;
   }
 
-  h1,
+  h1 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
   h2,
   h3 {
     @apply tracking-tight;
@@ -54,6 +100,24 @@
 
   p {
     text-wrap: pretty;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--hover-lift);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme("colors.accent.DEFAULT");
   }
 }
 
@@ -67,12 +131,12 @@
   }
 
   .section-label::before {
-    content: "";
-    @apply h-px w-6 bg-line-strong;
+    content: "§";
+    @apply text-accent-soft/70;
   }
 
   .card {
-    @apply rounded-xl border border-line bg-bg-raised/60 backdrop-blur-sm transition-colors duration-300;
+    @apply rounded-xl border border-line bg-bg-overlay/40 backdrop-blur-md transition-colors duration-300;
   }
 
   .card-hover:hover {
@@ -85,18 +149,87 @@
 
   .glow-ring {
     box-shadow:
-      0 0 0 1px rgba(99, 102, 241, 0.14),
-      0 0 40px -12px rgba(99, 102, 241, 0.4);
+      0 0 0 1px rgb(var(--accent) / 0.18),
+      0 0 40px -10px rgb(var(--accent) / 0.5);
+  }
+
+  /* Technical drafting frame — corner ticks on opposite corners.
+     The site's signature motif, standing in for generic card glow. */
+  .frame-tech {
+    position: relative;
+  }
+
+  .frame-tech::before,
+  .frame-tech::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+
+  .frame-tech::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid theme("colors.accent.soft");
+    border-left: 1.5px solid theme("colors.accent.soft");
+    opacity: 0.75;
+  }
+
+  .frame-tech::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid theme("colors.accent.cyan");
+    border-right: 1.5px solid theme("colors.accent.cyan");
+    opacity: 0.6;
   }
 
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-line-strong to-transparent;
   }
+
+  .hairline-dashed {
+    height: 1px;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      theme("colors.line.strong") 0,
+      theme("colors.line.strong") 5px,
+      transparent 5px,
+      transparent 10px
+    );
+    background-size: 10px 1px;
+  }
+
+  /* Every clickable action gets this: a neon glow on hover, a snap on press.
+     The site's answer to "highlight every clickable action". */
+  .click-glow {
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .click-glow:hover {
+    box-shadow:
+      0 0 0 1px rgb(var(--accent) / 0.3),
+      0 0 22px -4px rgb(var(--accent) / 0.55);
+    border-color: rgb(var(--accent) / 0.45);
+  }
+
+  .click-glow:active {
+    transform: scale(0.96);
+  }
 }
 
 @layer utilities {
   .text-shadow-glow {
-    text-shadow: 0 0 32px rgba(129, 140, 248, 0.35);
+    text-shadow: 0 0 28px rgb(var(--accent) / 0.5);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px rgb(var(--accent) / 0.5);
   }
 
   .mask-fade-x {

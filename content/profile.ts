@@ -12,39 +12,50 @@ export interface AboutCard {
 export const profile = {
   name: "Hasan Basheer",
   shortName: "Hasan B",
-  // Verbatim LinkedIn headline, split on "|".
   roles: [
     "ENOVIA & 3DEXPERIENCE Developer",
-    "Full Stack Developer",
-    "Widget",
+    "Full-Stack & Agentic AI Engineer",
     "GenAI Architect",
-    "AI Automation & Agentic AI Developer",
-    "Building AI Products & AI Agents",
-    "SaaS",
-    "Rank Holder in Electrical Engineering from PSNACET",
   ],
   currentTitle: "Engineer – Developer",
+  // Rendered as a single highlight line under the name in the Hero section.
+  headlineItems: [
+    "ENOVIA 3DEXPERIENCE Developer",
+    "Full-Stack Developer",
+    "GenAI Architect",
+    "Helping Businesses Automate Workflows",
+    "Building AI Agents & AI Products",
+  ],
   currentCompany: "Renault Nissan Technology & Business Centre India",
   location: "Dindigul, India",
   email: "hasanbasheer01@gmail.com",
   // TODO: confirm public phone visibility before launch.
   phone: "+91 95006 96186",
   availability: "Open to AI, software and product-building opportunities",
+  greeting: "👋 Hey, welcome — great to have you here",
 
   tagline:
-    "ENOVIA & 3DEXPERIENCE engineer building toward LLMs, RAG and agentic AI.",
+    "Full-stack developer with 3 years on ENOVIA & 3DEXPERIENCE — now expanding into GenAI and agentic AI.",
 
   heroPitch:
-    "I build enterprise ENOVIA solutions by trade, and LLM-powered applications and AI agents by focus — combining full-stack engineering with Generative AI.",
+    "Enterprise ENOVIA and full-stack development by trade, GenAI and agentic AI workflows by focus — Python, LLMs, RAG and AI automation frameworks.",
 
   aboutLead:
     "Full-stack ENOVIA engineer expanding into LLMs, RAG and AI agents.",
 
+  aboutIntro:
+    "I'm an AI-Powered ENOVIA Full-Stack Developer with 3 years of enterprise experience in PLM and the 3DEXPERIENCE platform. I build intelligent, scalable solutions by combining ENOVIA, full-stack development and Generative AI architecture. Passionate about turning complex engineering challenges into simple, smart and practical solutions.",
+
+  // Short fragments, not paragraphs — each renders as one line in a manifest-style list.
   aboutBody: [
-    "I'm a Software Developer with 3 years of experience in ENOVIA and the 3DEXPERIENCE platform, specializing in full-stack application development, widget development, and enterprise solutions.",
-    "My experience includes developing and maintaining ENOVIA widgets, building REST APIs, working with Java, Spring Boot, Vue.js, MQL, TCL, and Data Perspective Studio to deliver scalable and business-focused solutions. I enjoy solving technical challenges, optimizing existing applications, and building user-friendly interfaces.",
-    "I continuously expand my technical skills by learning modern software development practices and exploring Generative AI technologies. My current focus is on Python, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI agents, and AI-powered application development. My goal is to combine my enterprise application experience with AI to build intelligent software solutions.",
-    "I am always open to connecting with professionals, sharing knowledge, and exploring opportunities where I can learn, grow, and contribute.",
+    "3 years building on ENOVIA and the 3DEXPERIENCE platform.",
+    "Full-stack: widgets, REST APIs, enterprise-facing UI.",
+    "Daily tools: Java, Spring Boot, Vue.js, MQL, TCL, Data Perspective Studio.",
+    "I like solving technical problems and turning them into usable interfaces.",
+    "Now going deep on Python, LLMs and Retrieval-Augmented Generation.",
+    "Building agentic AI — AutoGen, CrewAI, Google's Agent Development Kit.",
+    "The goal: enterprise engineering experience + AI, aimed at real software.",
+    "Open to connecting, sharing what I know, and learning what I don't.",
   ],
 
   aboutCards: [
